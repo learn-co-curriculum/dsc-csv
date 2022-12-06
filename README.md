@@ -238,6 +238,9 @@ Fortunately we aren't limited to just using the `list` data structure — we can
 
 In order to read the data in as a list of dictionaries rather than a list of lists, we can use `csv.DictReader`:
 
+> **Windows Users:**  
+ The default encoding type set by Windows OS is different than that of MacOS or Linux. To ensure the proper encoding when loading the `usa_2016_gold_medals.csv` dataset you will need specify the encoding type using `encoding='utf-8'`.
+
 
 ```python
 with open("olympic_medals.csv") as f:
@@ -324,6 +327,9 @@ usa_2016_gold_medals
 
 And we could write that result to a file using `csv.DictWriter` ([documentation here](https://docs.python.org/3/library/csv.html#csv.DictWriter)):
 
+> Windows Users:
+When using `csv.DictWriter` to write to a file, the default settings may cause unnecessary blank lines to be saved to the file. This can be avoided by adding the argument `dialect='unix'`. While this does not affect the data, it will help to mitigate any issues which may be caused by the additional blank lines when doing other data processing tasks.
+
 
 ```python
 with open("usa_2016_gold_medals.csv", "w") as f:
@@ -335,27 +341,27 @@ with open("usa_2016_gold_medals.csv", "w") as f:
 
 We can use the bash command `cat` to visually inspect the file that was created:
 
-(If you are running this lesson on a Windows or other non-Unix computer, you may need to use some other tool to do this, or just skip this step since it is just for demonstration purposes.)
+> If you are running this lesson on a Windows or other non-Unix computer, you may need to use some other tool to do this, or just skip this step since it is just for demonstration purposes.
 
 
 ```python
 ! cat usa_2016_gold_medals.csv
 ```
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    Event,Name
+    1500M Men,Matthew CENTROWITZ
+    400M Hurdles Men,Kerron CLEMENT
+    4X400M Relay Men,null
+    Decathlon Men,Ashton EATON
+    Long Jump Men,Jeff HENDERSON
+    Shot Put Men,Ryan CROUSER
+    Triple Jump Men,Christian TAYLOR
+    100M Hurdles Women,Brianna ROLLINS
+    400M Hurdles Women,Dalilah MUHAMMAD
+    4X100M Relay Women,null
+    4X400M Relay Women,null
+    Long Jump Women,Tianna BARTOLETTA
+    Shot Put Women,Michelle CARTER
 
 
 ## Data Schemas and CSV Files
