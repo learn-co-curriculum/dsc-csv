@@ -215,6 +215,9 @@ Let's advance from a high school track dataset to a dataset with information abo
 
 Technically we could open this with `csv.reader`:
 
+> **Windows Users:**  
+ The default encoding type set by Windows OS is different than that of MacOS or Linux. To ensure the proper encoding when loading the *usa_2016_gold_medals.csv* dataset you will need specify the encoding type by adding the argument `encoding='utf-8'`.
+
 
 ```python
 with open("olympic_medals.csv") as f:
@@ -237,9 +240,6 @@ Then we could use list indexing to access the gender field of a given row using 
 Fortunately we aren't limited to just using the `list` data structure — we can use a `dict` instead, so that we could look up the gender field using `["Gender"]` or the nationality field using `["Nationality"]`.
 
 In order to read the data in as a list of dictionaries rather than a list of lists, we can use `csv.DictReader`:
-
-> **Windows Users:**  
- The default encoding type set by Windows OS is different than that of MacOS or Linux. To ensure the proper encoding when loading the `usa_2016_gold_medals.csv` dataset you will need specify the encoding type using `encoding='utf-8'`.
 
 
 ```python
